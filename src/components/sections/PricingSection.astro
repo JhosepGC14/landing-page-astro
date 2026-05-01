@@ -1,0 +1,104 @@
+---
+import { SITE } from '../../lib/site';
+import {
+	PricingHeadline,
+	PricingSubtitle,
+	PricingDailyAmount,
+	PricingYearlyDetail,
+} from '../islands/PricingDisplay';
+
+const includes = [
+	'Más de 160 pruebas de laboratorio',
+	'Resultados claros y conectados',
+	'Cita médica incluida para explicarlos',
+	'Plan personalizado con acciones claras',
+	'Sin seguros. Sin letra chica.',
+];
+---
+
+<section id="pricing" class="relative py-24 md:py-32">
+	<div class="container-page">
+		<div class="mx-auto max-w-3xl text-center">
+			<h2
+				class="font-display text-3xl font-light leading-[1.1] tracking-tight text-balance md:text-5xl"
+			>
+				<PricingHeadline client:load />
+			</h2>
+			<p class="mx-auto mt-5 max-w-xl text-base text-white/60 md:text-lg">
+				<PricingSubtitle client:load />
+			</p>
+		</div>
+
+		<div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-12">
+			<div class="flex flex-col items-center text-center md:items-start md:text-left">
+				<p class="text-sm uppercase tracking-wider text-white/50">Membresía</p>
+				<p class="mt-1 font-display text-2xl font-light text-white md:text-3xl">
+					Optimal Core
+				</p>
+
+				<div
+					class="relative mt-8 aspect-[1.6/1] w-full max-w-sm overflow-hidden rounded-2xl border border-brand-500/30"
+				>
+					{/* TODO: replace with /images/optimal-core-card.png official membership card render */}
+					<div class="absolute inset-0 bg-brand-gradient" aria-hidden="true"></div>
+					<div class="absolute inset-0 bg-black/30" aria-hidden="true"></div>
+
+					<div class="relative flex h-full flex-col justify-between p-6 text-white">
+						<div>
+							<p class="font-display text-xl font-medium">Optimal</p>
+						</div>
+						<div>
+							<p class="font-display text-3xl font-light">CORE</p>
+							<p class="mt-1 text-[10px] uppercase tracking-widest text-white/70">
+								Membresía anual
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<p class="mt-8">
+					<PricingDailyAmount client:load />
+				</p>
+				<p class="mt-2 text-sm text-white/50">
+					<PricingYearlyDetail client:load />
+				</p>
+			</div>
+
+			<div class="flex flex-col">
+				<h3 class="text-xl font-medium text-white md:text-2xl">Qué incluye</h3>
+				<ul class="mt-6 space-y-4">
+					{
+						includes.map((item) => (
+							<li class="flex items-start gap-3 text-sm text-white/80 md:text-base">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									class="mt-0.5 size-5 shrink-0 text-brand-400"
+									aria-hidden="true"
+								>
+									<circle cx="12" cy="12" r="9" />
+									<path d="m9 12 2 2 4-4" />
+								</svg>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+
+				<div class="mt-10">
+					<a
+						href={SITE.subscriptionsUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-7 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98] md:w-fit"
+					>
+						Comienza hoy
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
