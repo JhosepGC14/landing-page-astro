@@ -4,6 +4,7 @@ import { ClientRouter } from 'astro:transitions';
 import { SITE } from '../lib/site';
 import WhatsappButton from '../components/WhatsappButton.astro';
 import { RegionGate } from '../components/islands/RegionGate';
+import { SmoothScroll } from '../components/islands/SmoothScroll';
 
 interface Props {
 	title?: string;
@@ -68,6 +69,7 @@ const ogImage = new URL(image, Astro.site ?? SITE.url);
 
 		<slot />
 
+		<SmoothScroll client:load />
 		<RegionGate client:load />
 
 		{!hideWhatsapp && <WhatsappButton />}
