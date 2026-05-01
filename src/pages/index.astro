@@ -1,14 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/sections/Header.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
 ---
 
 <BaseLayout>
-	<main id="main" class="container-page py-32">
-		<h1 class="font-display text-5xl tracking-tight text-balance md:text-7xl">
-			Entiende qué está pasando con tu salud hoy
-		</h1>
-		<p class="mt-6 max-w-2xl text-lg text-muted-foreground">
-			Setup base completo. Las secciones se construyen en los siguientes commits.
-		</p>
+	<Header />
+	<main id="main">
+		<HeroSection />
 	</main>
 </BaseLayout>
