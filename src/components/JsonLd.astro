@@ -1,0 +1,48 @@
+---
+import { SITE } from '../lib/site';
+import { FAQ_ITEMS } from '../data/faq';
+
+interface Props {
+	includeFaq?: boolean;
+}
+
+const { includeFaq = false } = Astro.props;
+
+const organization = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Optimal Health OS LLC',
+	alternateName: 'Optimal',
+	url: SITE.url,
+	logo: `${SITE.url}/og-image.jpg`,
+	description: SITE.tagline,
+	areaServed: ['MX', 'CO', 'PE', 'CL'],
+	contactPoint: [
+		{
+			'@type': 'ContactPoint',
+			email: SITE.contactEmail,
+			contactType: 'customer service',
+			availableLanguage: ['Spanish', 'English'],
+		},
+	],
+	sameAs: [SITE.socials.instagram, SITE.socials.linkedin],
+};
+
+const faqPage = includeFaq
+	? {
+			'@context': 'https://schema.org',
+			'@type': 'FAQPage',
+			mainEntity: FAQ_ITEMS.map((item) => ({
+				'@type': 'Question',
+				name: item.question,
+				acceptedAnswer: {
+					'@type': 'Answer',
+					text: item.answer,
+				},
+			})),
+		}
+	: null;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organization)} />
+{faqPage && <script type="application/ld+json" set:html={JSON.stringify(faqPage)} />}
