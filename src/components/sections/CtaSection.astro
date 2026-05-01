@@ -1,0 +1,32 @@
+---
+import { SITE } from '../../lib/site';
+---
+
+<section id="cta" class="relative overflow-hidden py-24 md:py-32">
+	<div
+		class="absolute inset-x-0 bottom-0 -z-10 h-[400px] bg-[radial-gradient(50%_70%_at_50%_100%,rgba(255,90,31,0.18),transparent_70%)]"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="container-page text-center">
+		<h2
+			class="font-display text-4xl font-light leading-[1.1] tracking-tight text-balance md:text-6xl"
+		>
+			Empieza hoy tu chequeo de salud completo
+		</h2>
+		<p class="mx-auto mt-5 max-w-xl text-base text-white/60 md:text-lg">
+			Una sola prueba de sangre. Resultados claros. Cita médica incluida.
+		</p>
+		<div class="mt-10">
+			<a
+				href={SITE.subscriptionsUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98]"
+			>
+				Empieza ahora
+			</a>
+		</div>
+	</div>
+</section>
