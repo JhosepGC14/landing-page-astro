@@ -1,0 +1,23 @@
+---
+import { FAQ_ITEMS } from '../../data/faq';
+import { FaqAccordion } from '../islands/FaqAccordion';
+---
+
+<section id="faq" class="relative py-24 md:py-32">
+	<div class="absolute inset-0 -z-10 bg-brand-gradient-soft" aria-hidden="true"></div>
+
+	<div class="container-page">
+		<div class="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16">
+			<div class="md:col-span-4">
+				<h2
+					class="font-display text-4xl font-light leading-[1.1] tracking-tight text-balance md:sticky md:top-32 md:text-5xl"
+				>
+					Preguntas<br />Frecuentes
+				</h2>
+			</div>
+			<div class="md:col-span-8">
+				<FaqAccordion items={FAQ_ITEMS} client:visible />
+			</div>
+		</div>
+	</div>
+</section>
