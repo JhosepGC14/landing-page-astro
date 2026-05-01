@@ -1,0 +1,18 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<!-- TODO: replace with the official Optimal SVG/wordmark file when provided by the brand -->
+<a
+	href="/"
+	aria-label="Optimal — Inicio"
+	class:list={['inline-flex items-center', className]}
+>
+	<span class="font-display text-xl font-medium tracking-tight text-white md:text-2xl">
+		Optimal
+	</span>
+</a>
