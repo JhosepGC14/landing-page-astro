@@ -1,0 +1,102 @@
+---
+import { TraditionalPrice, OptimalPrice } from '../islands/ComparisonPrices';
+
+const traditionalItems = [
+	'6 a 8 médicos distintos',
+	'Citas separadas',
+	'Recomendaciones genéricas',
+	'Resultados difíciles de entender',
+	'Semanas o meses',
+];
+
+const optimalItems = [
+	'2 chequeos integrales',
+	'Cita médica incluida',
+	'Plan personalizado',
+	'Resultados claros en HealthOS',
+	'En menos de una semana',
+];
+---
+
+<section id="comparison" class="relative py-24 md:py-32">
+	<div class="container-page">
+		<div class="mx-auto max-w-4xl text-center">
+			<h2
+				class="font-display text-3xl font-light leading-[1.1] tracking-tight text-balance md:text-5xl"
+			>
+				Lo que normalmente te tomaría meses, múltiples médicos y miles de dólares
+			</h2>
+			<p class="mx-auto mt-5 max-w-xl text-base text-white/60 md:text-lg">
+				Aquí sucede en días. Con una sola prueba. En un solo lugar.
+			</p>
+		</div>
+
+		<div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2 md:items-center md:gap-8">
+			<article
+				class="rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center md:p-10"
+				aria-label="Sistema tradicional"
+			>
+				<h3 class="text-xl font-light text-white/80">Sistema tradicional</h3>
+				<p class="mt-6">
+					<TraditionalPrice client:load />
+				</p>
+				<ul class="mt-8 space-y-3 text-left">
+					{
+						traditionalItems.map((item) => (
+							<li class="flex items-start gap-3 text-sm text-white/60">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.75"
+									class="mt-0.5 size-4 shrink-0 text-white/30"
+									aria-hidden="true"
+								>
+									<circle cx="12" cy="12" r="9" />
+								</svg>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+
+			<article
+				class="relative overflow-hidden rounded-2xl border border-brand-500/30 p-8 text-center md:p-10"
+				aria-label="Optimal"
+			>
+				<div class="absolute inset-0 -z-10 bg-brand-gradient opacity-90" aria-hidden="true">
+				</div>
+				<div class="absolute inset-0 -z-10 bg-black/30" aria-hidden="true"></div>
+
+				<h3 class="text-xl font-light text-white">Optimal</h3>
+				<p class="mt-6 text-white">
+					<OptimalPrice client:load />
+				</p>
+				<ul class="mt-8 space-y-3 text-left">
+					{
+						optimalItems.map((item) => (
+							<li class="flex items-start gap-3 text-sm text-white">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									class="mt-0.5 size-4 shrink-0 text-white"
+									aria-hidden="true"
+								>
+									<circle cx="12" cy="12" r="9" />
+									<path d="m9 12 2 2 4-4" />
+								</svg>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+				<p class="mt-8 text-xs text-white/70">*El precio incluye impuestos</p>
+			</article>
+		</div>
+	</div>
+</section>
