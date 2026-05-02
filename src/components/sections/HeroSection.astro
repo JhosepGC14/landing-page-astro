@@ -5,7 +5,7 @@ import { HeroPrice, HeroDailyStat } from '../islands/HeroPrice';
 
 <section
 	id="hero"
-	class="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pb-12 pt-32 md:pb-20 md:pt-40"
+	class="relative isolate flex min-h-svh flex-col justify-end overflow-hidden pt-32 pb-12 md:pt-40 md:pb-20"
 >
 	<!-- Background media -->
 	<div class="absolute inset-0 -z-10">
@@ -38,42 +38,44 @@ import { HeroPrice, HeroDailyStat } from '../islands/HeroPrice';
 	</div>
 
 	<div class="container-page">
-		<div class="max-w-4xl">
-			<h1
-				class="font-display text-5xl font-light leading-[1.05] tracking-tight text-balance text-white md:text-7xl lg:text-[5.5rem]"
-			>
-				Entiende qué está pasando con tu salud hoy
-			</h1>
-			<p class="mt-6 max-w-xl text-base text-white/70 md:text-lg">
-				Un chequeo de salud completo con más de 300 pruebas, resultados fáciles de
-				entender y un plan claro para cuidarte mejor.<br />
-				<HeroPrice client:load />
-			</p>
-			<div class="mt-8">
+		<div class="w-full">
+			<div class="max-w-4xl">
+				<h1
+					class="font-display text-5xl leading-[1.05] font-light tracking-tight text-balance text-white md:text-7xl lg:text-[3.5rem]"
+				>
+					Entiende qué está pasando con tu salud hoy
+				</h1>
+				<p class="mt-6 max-w-2xl text-base text-white md:text-lg">
+					Un chequeo de salud completo con más de 300 pruebas, resultados fáciles de entender y un
+					plan claro para cuidarte mejor.<br />
+					<HeroPrice client:load />
+				</p>
+			</div>
+			<div class="mt-8 flex flex-row justify-between">
 				<a
 					href={SITE.subscriptionsUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex h-12 items-center gap-2 rounded-full bg-white px-7 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98]"
+					class="inline-flex h-12 items-center gap-2 rounded-[12px] bg-white px-7 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98]"
 				>
 					Empieza tu chequeo
 				</a>
-			</div>
-		</div>
 
-		<div
-			class="mt-16 grid grid-cols-1 gap-x-8 gap-y-6 border-t border-white/10 pt-8 md:mt-20 md:grid-cols-3 md:items-end"
-		>
-			<div class="text-left">
-				<p class="font-medium text-white">+300 pruebas</p>
-				<p class="text-sm text-white/50">2 tomas por año</p>
-			</div>
-			<div class="text-left md:justify-self-center md:text-center">
-				<p class="font-medium text-white">Cita médica</p>
-				<p class="text-sm text-white/50">Incluida en el plan</p>
-			</div>
-			<div class="text-left md:justify-self-end md:text-right">
-				<HeroDailyStat client:load />
+				<div class="flex flex-row gap-x-8 gap-y-6 border-white/10 md:grid-cols-3 md:items-end">
+					<div class="text-left text-white">
+						<p class="font-medium">+300 pruebas</p>
+						<p class="text-sm">2 tomas por año</p>
+					</div>
+					<div class="h-full border-l border-white/10"></div>
+					<div class="text-left text-white">
+						<p class="font-medium">Cita médica</p>
+						<p class="text-sm">Incluida en el plan</p>
+					</div>
+					<div class="h-full border-l border-white/10"></div>
+					<div class="text-left">
+						<HeroDailyStat client:load />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

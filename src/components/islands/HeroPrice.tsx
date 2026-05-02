@@ -22,7 +22,7 @@ export const HeroDailyStat = (): React.ReactElement => {
 	return (
 		<>
 			<p className="font-medium text-white">{pricing.daily.formatted} por día</p>
-			<p className="text-sm text-white/50">{pricing.yearly.formatted} al año</p>
+			<p className="text-sm text-white">{pricing.yearly.formatted} al año</p>
 		</>
 	);
 };

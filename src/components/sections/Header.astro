@@ -1,6 +1,7 @@
 ---
 import { NAV_LINKS, SITE } from '../../lib/site';
 import Logo from '../Logo.astro';
+import { MobileMenuButton } from '../islands/MobileMenu';
 ---
 
 <header
@@ -10,7 +11,7 @@ import Logo from '../Logo.astro';
 >
 	<nav
 		aria-label="Principal"
-		class="group/header flex w-full max-w-7xl items-center justify-between gap-6 rounded-full border border-transparent px-4 py-2.5 transition-all duration-300 md:px-6 data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-black/50 data-[scrolled=true]:backdrop-blur-xl data-[scrolled=true]:max-w-5xl"
+		class="group/header flex w-full max-w-[75rem] items-center justify-between gap-6 rounded-full border border-transparent px-4 py-2.5 transition-all duration-300 md:px-6 data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-black/50 data-[scrolled=true]:backdrop-blur-xl data-[scrolled=true]:max-w-5xl"
 		data-scrolled="false"
 	>
 		<Logo class="shrink-0" />
@@ -39,77 +40,11 @@ import Logo from '../Logo.astro';
 			>
 				Empieza tu chequeo
 			</a>
-			<button
-				type="button"
-				class="inline-flex size-10 items-center justify-center rounded-full text-white lg:hidden"
-				aria-label="Abrir menú"
-				data-mobile-menu-trigger
-			>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="1.75"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					class="size-5"
-					aria-hidden="true"
-				>
-					<line x1="4" x2="20" y1="7" y2="7"></line>
-					<line x1="4" x2="20" y1="17" y2="17"></line>
-				</svg>
-			</button>
+			<MobileMenuButton client:load />
 		</div>
 	</nav>
 </header>
 
-<!-- Mobile menu (TODO: refactor to a React island if it grows in features) -->
-<div
-	data-mobile-menu
-	class="fixed inset-0 z-40 hidden flex-col bg-black/95 backdrop-blur-xl"
-	aria-hidden="true"
->
-	<div class="flex items-center justify-between px-6 pt-6">
-		<Logo />
-		<button
-			type="button"
-			class="inline-flex size-10 items-center justify-center rounded-full text-white"
-			aria-label="Cerrar menú"
-			data-mobile-menu-close
-		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.75"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				class="size-6"
-				aria-hidden="true"
-			>
-				<path d="M18 6 6 18"></path>
-				<path d="m6 6 12 12"></path>
-			</svg>
-		</button>
-	</div>
-	<ul class="flex flex-1 flex-col items-center justify-center gap-8 px-6">
-		{
-			NAV_LINKS.map((link) => (
-				<li>
-					<a
-						href={link.href}
-						class="text-2xl font-medium tracking-tight text-white"
-						data-mobile-menu-link
-					>
-						{link.label}
-					</a>
-				</li>
-			))
-		}
-	</ul>
-</div>
 
 <script>
 	const initHeader = (): void => {
@@ -122,32 +57,6 @@ import Logo from '../Logo.astro';
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
 
-		const trigger = document.querySelector(
-			'[data-mobile-menu-trigger]',
-		) as HTMLElement | null;
-		const menu = document.querySelector('[data-mobile-menu]') as HTMLElement | null;
-		const close = document.querySelector('[data-mobile-menu-close]') as HTMLElement | null;
-		const links = document.querySelectorAll('[data-mobile-menu-link]');
-
-		const openMenu = (): void => {
-			if (!menu) return;
-			menu.classList.remove('hidden');
-			menu.classList.add('flex');
-			menu.setAttribute('aria-hidden', 'false');
-			document.body.style.overflow = 'hidden';
-		};
-
-		const closeMenu = (): void => {
-			if (!menu) return;
-			menu.classList.add('hidden');
-			menu.classList.remove('flex');
-			menu.setAttribute('aria-hidden', 'true');
-			document.body.style.overflow = '';
-		};
-
-		trigger?.addEventListener('click', openMenu);
-		close?.addEventListener('click', closeMenu);
-		links.forEach((link) => link.addEventListener('click', closeMenu));
 	};
 
 	initHeader();
