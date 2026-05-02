@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write \"**/*.{astro,ts,tsx,js,mjs,css,md,json}\"",
+    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,mjs,css,md,json}\"",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.4",
@@ -42,6 +45,9 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.0"
   }
 }
