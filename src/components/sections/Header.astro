@@ -11,7 +11,7 @@ import { MobileMenuButton } from '../islands/MobileMenu';
 >
 	<nav
 		aria-label="Principal"
-		class="group/header flex w-full max-w-[75rem] items-center justify-between gap-6 rounded-full border border-transparent px-4 py-2.5 transition-all duration-300 md:px-6 data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-black/50 data-[scrolled=true]:backdrop-blur-xl data-[scrolled=true]:max-w-5xl"
+		class="group/header flex w-full max-w-[1168px] items-center justify-between gap-6 rounded-[12px] border border-transparent px-4 py-2.5 transition-all duration-300 data-[scrolled=true]:max-w-5xl data-[scrolled=true]:border-white/10 data-[scrolled=true]:bg-black/50 data-[scrolled=true]:backdrop-blur-xl"
 		data-scrolled="false"
 	>
 		<Logo class="shrink-0" />
@@ -20,10 +20,7 @@ import { MobileMenuButton } from '../islands/MobileMenu';
 			{
 				NAV_LINKS.map((link) => (
 					<li>
-						<a
-							href={link.href}
-							class="text-sm text-white/70 transition-colors hover:text-white"
-						>
+						<a href={link.href} class="text-sm text-white/70 transition-colors hover:text-white">
 							{link.label}
 						</a>
 					</li>
@@ -36,7 +33,7 @@ import { MobileMenuButton } from '../islands/MobileMenu';
 				href={SITE.subscriptionsUrl}
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex h-10 items-center gap-2 rounded-full bg-white px-5 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98]"
+				class="inline-flex h-10 items-center gap-2 rounded-[12px] bg-white px-5 text-sm font-medium text-black transition-all hover:bg-white/90 active:scale-[0.98]"
 			>
 				Empieza tu chequeo
 			</a>
@@ -44,7 +41,6 @@ import { MobileMenuButton } from '../islands/MobileMenu';
 		</div>
 	</nav>
 </header>
-
 
 <script>
 	const initHeader = (): void => {
@@ -56,7 +52,6 @@ import { MobileMenuButton } from '../islands/MobileMenu';
 		};
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
-
 	};
 
 	initHeader();
